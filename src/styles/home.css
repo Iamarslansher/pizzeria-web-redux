@@ -1,0 +1,15 @@
+/*  */
+.main-container {
+  width: 100% !important;
+  height: 100vh !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.sub-container {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
