@@ -98,6 +98,79 @@ const PIZZAS = [
     image:
       "https://img.freepik.com/free-photo/pizza-with-meat-mushrooms_140725-5402.jpg",
   },
+  {
+    id: 11,
+    name: "Veggie Delight",
+    ingredients: [
+      "Tomato Sauce",
+      "Mozzarella",
+      "Mushrooms",
+      "Onions",
+      "Bell Peppers",
+      "Tomatoes",
+    ],
+    price: 10.99,
+    image:
+      "https://www.vegrecipesofindia.com/wp-content/uploads/2020/04/veggie-pizza-recipe-1.jpg",
+  },
+  {
+    id: 12,
+    name: "Seafood Extravaganza",
+    ingredients: [
+      "Tomato Sauce",
+      "Mozzarella",
+      "Shrimp",
+      "Scallops",
+      "Crab Meat",
+      "Anchovies",
+    ],
+    price: 14.99,
+    image:
+      "https://www.seriouseats.com/recipes/images/2011/07/20110714-seafood-pizza-recipe-1.jpg",
+  },
+  {
+    id: 13,
+    name: "BBQ Chicken",
+    ingredients: [
+      "BBQ Sauce",
+      "Chicken",
+      "Mozzarella",
+      "Red Onion",
+      "Cilantro",
+    ],
+    price: 12.99,
+    image:
+      "https://www.seriouseats.com/recipes/images/2011/07/20110714-bbq-chicken-pizza-recipe-1.jpg",
+  },
+  {
+    id: 14,
+    name: "Greek Pizza",
+    ingredients: [
+      "Tomato Sauce",
+      "Mozzarella",
+      "Feta",
+      "Kalamata Olives",
+      "Artichoke Hearts",
+      "Sun-dried Tomatoes",
+    ],
+    price: 13.49,
+    image:
+      "https://www.seriouseats.com/recipes/images/2011/07/20110714-greek-pizza-recipe-1.jpg",
+  },
+  {
+    id: 15,
+    name: "Meatball Madness",
+    ingredients: [
+      "Tomato Sauce",
+      "Mozzarella",
+      "Meatballs",
+      "Parmesan",
+      "Basil",
+    ],
+    price: 13.99,
+    image:
+      "https://www.seriouseats.com/recipes/images/2011/07/20110714-meatball-pizza-recipe-1.jpg",
+  },
 ];
 
 export default PIZZAS;

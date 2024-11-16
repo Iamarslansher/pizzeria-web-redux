@@ -1,12 +1,33 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { setToCart } from "../../store/addToCartSlice";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const PizzaCard = ({ pizza }) => {
   const dispatch = useDispatch();
 
+  const order = () => {
+    handleAddToCart();
+    dispatch(setToCart(pizza));
+  };
+
+  const handleAddToCart = () => {
+    toast.success("Item added to cart successfully!", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   return (
     <div className="flex flex-col bg-white shadow-md rounded-lg overflow-hidden h-full">
+      <ToastContainer />
       <div className="relative h-48">
         <img
           src={pizza.image}
@@ -23,7 +44,7 @@ const PizzaCard = ({ pizza }) => {
       <div className="p-4 border-t border-gray-200 flex justify-end">
         <button
           className="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600"
-          onClick={() => dispatch(setToCart(pizza))}
+          onClick={order}
         >
           Add to Cart
         </button>

@@ -23,9 +23,14 @@ const Navbar = () => {
   const searchItem = (e) => {
     const searchValue = e.target.value;
     setSearchPiza(searchValue);
-    let thisPiza = PIZZAS.filter((piza) => {
-      return piza.name.toLowerCase().includes(searchValue.toLowerCase());
-    });
+    let thisPiza = [];
+    if (!searchValue) {
+      thisPiza = [];
+    } else {
+      thisPiza = PIZZAS.filter((piza) => {
+        return piza.name.toLowerCase().includes(searchValue.toLowerCase());
+      });
+    }
 
     console.log(thisPiza);
     dispatch(setToSearchPiza(thisPiza));
