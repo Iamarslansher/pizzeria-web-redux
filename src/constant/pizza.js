@@ -111,7 +111,7 @@ const PIZZAS = [
     ],
     price: 10.99,
     image:
-      "https://www.vegrecipesofindia.com/wp-content/uploads/2020/04/veggie-pizza-recipe-1.jpg",
+      "https://images.mrcook.app/recipe-image/0191d5f0-1a26-70d9-8441-2861ea8f4129",
   },
   {
     id: 12,
@@ -126,22 +126,9 @@ const PIZZAS = [
     ],
     price: 14.99,
     image:
-      "https://www.seriouseats.com/recipes/images/2011/07/20110714-seafood-pizza-recipe-1.jpg",
+      "https://thumbs.dreamstime.com/b/delight-seaside-extravaganza-seafood-pizza-overflowing-plump-shrimp-briny-clams-tender-squid-all-elegantly-318583686.jpg",
   },
-  {
-    id: 13,
-    name: "BBQ Chicken",
-    ingredients: [
-      "BBQ Sauce",
-      "Chicken",
-      "Mozzarella",
-      "Red Onion",
-      "Cilantro",
-    ],
-    price: 12.99,
-    image:
-      "https://www.seriouseats.com/recipes/images/2011/07/20110714-bbq-chicken-pizza-recipe-1.jpg",
-  },
+
   {
     id: 14,
     name: "Greek Pizza",
@@ -155,7 +142,7 @@ const PIZZAS = [
     ],
     price: 13.49,
     image:
-      "https://www.seriouseats.com/recipes/images/2011/07/20110714-greek-pizza-recipe-1.jpg",
+      "https://inquiringchef.com/wp-content/uploads/2020/05/Greek-Pizza_square.jpg",
   },
   {
     id: 15,
@@ -169,7 +156,40 @@ const PIZZAS = [
     ],
     price: 13.99,
     image:
-      "https://www.seriouseats.com/recipes/images/2011/07/20110714-meatball-pizza-recipe-1.jpg",
+      "https://www.cuisineandcocktails.com/wp-content/uploads/2019/03/10773156448_IMG_0841.jpg",
+  },
+
+  {
+    id: 16,
+    name: "Veggie Delight",
+    ingredients: [
+      "Tomato Sauce",
+      "Mozzarella",
+      "Bell Peppers",
+      "Mushrooms",
+      "Onions",
+      "Olives",
+    ],
+    price: 11.99,
+    image:
+      "https://cdn.shopify.com/s/files/1/0173/8181/8422/files/20240625161049-recipeimage7_pizzagriddle_veggievegandelight.jpg?v=1719331851&width=600&height=900",
+  },
+
+  {
+    id: 20,
+    name: "Supreme",
+    ingredients: [
+      "Tomato Sauce",
+      "Mozzarella",
+      "Pepperoni",
+      "Sausage",
+      "Bell Peppers",
+      "Onions",
+      "Olives",
+    ],
+    price: 14.99,
+    image:
+      "https://www.thespruceeats.com/thmb/lmDJraajDXMJ9izsIfzNt79GrSs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Pizzasupremehoriz-1ccfa0b1732b4c128427d19ae02a422b.jpg",
   },
 ];
 
