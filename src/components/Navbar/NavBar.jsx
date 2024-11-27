@@ -3,15 +3,19 @@ import { useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaSearch } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { setToSearchPiza } from "../../store/searchPizaSlice";
+import { userSearchOrder } from "../../store/orderSlice";
 import PIZZAS from "../../constant/pizza";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const total_cart = useSelector((state) => state.cartReducer.cart);
   const [totalPrice, setTotalPrice] = useState(0);
   const [searchPiza, setSearchPiza] = useState("");
+  const [searchOrder, setSearchOrder] = useState("");
 
+  const total_cart = useSelector((state) => state.cartReducer.cart);
+  const total_orders = useSelector((state) => state.orderSlice.orders);
+  // console.log(total_orders);
   useEffect(() => {
     let pizzaPrice = 0;
     total_cart.forEach((item) => {
@@ -20,7 +24,8 @@ const Navbar = () => {
     setTotalPrice(pizzaPrice);
   }, [total_cart]);
 
-  const searchItem = (e) => {
+  // Handle pizza search
+  const handleSearchPizza = (e) => {
     const searchValue = e.target.value;
     setSearchPiza(searchValue);
     let thisPiza = [];
@@ -32,46 +37,79 @@ const Navbar = () => {
       });
     }
 
-    console.log(thisPiza);
     dispatch(setToSearchPiza(thisPiza));
   };
 
+  // Handle order search
+  const handleSearchOrder = (e) => {
+    const searchValue = e.target.value;
+    setSearchOrder(searchValue);
+
+    if (searchValue && Array.isArray(total_orders)) {
+      const yourOrder = total_orders.find((order) =>
+        order.orderNumber.toString().includes(searchValue)
+      );
+      console.log(yourOrder);
+      return;
+      if (yourOrder) {
+        dispatch(userSearchOrder(yourOrder));
+      }
+    }
+  };
+
   return (
-    <nav className="bg-gray-900 text-white py-4">
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <div className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent cursor-pointer">
-          PIZZERIA
+    <nav className="bg-gray-800 text-white p-4 flex flex-col md:flex-row md:justify-between items-center gap-4">
+      {/* Brand Name */}
+      <div
+        className="text-2xl font-bold cursor-pointer"
+        onClick={() => navigate("/dashboard")}
+      >
+        PIZZERIA
+      </div>
+
+      {/* Input Fields for Search */}
+      <div className="flex flex-col md:flex-row gap-4">
+        {/* Search Pizza */}
+        <div className="relative flex items-center">
+          <FaSearch className="absolute left-3 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search pizza..."
+            value={searchPiza}
+            onChange={handleSearchPizza}
+            className="pl-10 py-2 w-64 rounded-lg border border-gray-300 text-gray-700 focus:outline-none focus:ring focus:ring-yellow-400"
+          />
         </div>
 
-        <form className="flex-1 max-w-md mx-8">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search for pizzas..."
-              value={searchPiza}
-              onChange={searchItem}
-              className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button
-              type="submit"
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
-            >
-              <FaSearch />
-            </button>
-          </div>
-        </form>
+        {/* Search Order */}
+        <div className="relative flex items-center">
+          <FaSearch className="absolute left-3 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search order..."
+            value={searchOrder}
+            onChange={handleSearchOrder}
+            className="pl-10 py-2 w-64 rounded-lg border border-gray-300 text-gray-700 focus:outline-none focus:ring focus:ring-yellow-400"
+          />
+        </div>
+      </div>
 
-        <div className="flex items-center">
-          <div className="text-lg mr-4">Total: ${totalPrice.toFixed(2)}</div>
-          <div className="relative">
-            <FaShoppingCart
-              className="text-yellow-500 text-2xl cursor-pointer"
-              onClick={() => navigate("addToCart")}
-            />
-            <div className="absolute -top-5 -right-3 bg-black text-white rounded-full px-2 py-1 text-sm">
+      {/* Cart and Total Price */}
+      <div className="flex items-center gap-4">
+        <div className="text-lg">
+          Total: <span className="font-bold">${totalPrice.toFixed(2)}</span>
+        </div>
+
+        <div
+          className="relative cursor-pointer"
+          onClick={() => navigate("addToCart")}
+        >
+          <FaShoppingCart size={24} />
+          {total_cart.length > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full px-2">
               {total_cart.length}
-            </div>
-          </div>
+            </span>
+          )}
         </div>
       </div>
     </nav>

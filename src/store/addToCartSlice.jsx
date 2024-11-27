@@ -19,9 +19,12 @@ const addToCartSlice = createSlice({
       });
       state.cart = newCart;
     },
+    onClearCart: (state) => {
+      state.cart = [];
+    },
   },
 });
 
-export const { setToCart, removeToCart } = addToCartSlice.actions;
+export const { setToCart, removeToCart, onClearCart } = addToCartSlice.actions;
 
 export default addToCartSlice;

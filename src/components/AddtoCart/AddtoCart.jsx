@@ -9,7 +9,7 @@ const AddtoCart = () => {
 
   return (
     <div className="bg-gray-900 h-auto text-white">
-      <div className="container mx-auto py-8 px-4">
+      <div className="container min-h-screen mx-auto py-8 px-4">
         <div className="flex justify-between items-center mb-6">
           <Link
             to="/dashboard"
