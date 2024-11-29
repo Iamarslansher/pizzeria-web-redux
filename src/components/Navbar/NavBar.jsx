@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaSearch } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { setToSearchPiza } from "../../store/searchPizaSlice";
-import { userSearchOrder } from "../../store/orderSlice";
+import { userSearchOrder, clearOrder } from "../../store/orderSlice";
 import PIZZAS from "../../constant/pizza";
 
 const Navbar = () => {
@@ -44,13 +44,16 @@ const Navbar = () => {
   const handleSearchOrder = (e) => {
     const searchValue = e.target.value;
     setSearchOrder(searchValue);
-
+    let yourOrder = [];
+    if (!searchValue) {
+      dispatch(clearOrder());
+    }
     if (searchValue && Array.isArray(total_orders)) {
-      const yourOrder = total_orders.find((order) =>
+      yourOrder = total_orders.find((order) =>
         order.orderNumber.toString().includes(searchValue)
       );
-      console.log(yourOrder);
-      return;
+      console.log(yourOrder, "NAV");
+      // return;
       if (yourOrder) {
         dispatch(userSearchOrder(yourOrder));
       }

@@ -33,10 +33,14 @@ const addToOrderSlice = createSlice({
       const order = data.payload;
       state.userOrder.push(order);
     },
+
+    clearOrder: (state) => {
+      state.userOrder = [];
+    },
   },
 });
 
-export const { setToOrder, setOnProcessing, userSearchOrder } =
+export const { setToOrder, setOnProcessing, userSearchOrder, clearOrder } =
   addToOrderSlice.actions;
 
 export default addToOrderSlice;

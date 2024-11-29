@@ -8,27 +8,28 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-const OrderSummaryCard = ({
-  username = "John Doe",
-  phoneNumber = "+1 (555) 123-4567",
-  address = "123 Main St, Cityville, State 12345",
-  totalAmount = 129.99,
-  items = [
-    { name: "Wireless Headphones", quantity: 1, price: 79.99 },
-    { name: "Phone Case", quantity: 2, price: 25.0 },
-  ],
-  status = "Processing",
-}) => {
+const OrderSummaryCard = (props) => {
+  const {
+    address,
+    orderNumber,
+    orderStatus,
+    totalPrice,
+    userName,
+    userPhone,
+    total_cart,
+  } = props.order;
+  console.log(props, "Prps");
+
   // Status color mapping
   const getStatusColor = (status) => {
     switch (status.toLowerCase()) {
       case "processing":
         return "text-yellow-600 bg-yellow-50";
-      case "shipped":
+      case "on list":
         return "text-blue-600 bg-blue-50";
-      case "delivered":
+      case "completed":
         return "text-green-600 bg-green-50";
-      case "cancelled":
+      case "delivery":
         return "text-red-600 bg-red-50";
       default:
         return "text-gray-600 bg-gray-50";
@@ -40,7 +41,7 @@ const OrderSummaryCard = ({
       {/* Header with Status */}
       <div
         className={`p-4 flex justify-between items-center ${getStatusColor(
-          status
+          orderStatus
         )}`}
       >
         <div className="flex items-center gap-2">
@@ -49,7 +50,7 @@ const OrderSummaryCard = ({
         </div>
         <div className="flex items-center gap-2">
           <CheckCircle className="w-5 h-5" />
-          <span className="font-semibold">{status}</span>
+          <span className="font-semibold">{orderStatus}</span>
         </div>
       </div>
 
@@ -61,7 +62,7 @@ const OrderSummaryCard = ({
             <User className="w-5 h-5 text-gray-500" />
             <div>
               <p className="text-xs text-gray-500">Username</p>
-              <p className="font-semibold">{username}</p>
+              <p className="font-semibold text-black">{userName}</p>
             </div>
           </div>
 
@@ -70,7 +71,7 @@ const OrderSummaryCard = ({
             <Phone className="w-5 h-5 text-gray-500" />
             <div>
               <p className="text-xs text-gray-500">Phone Number</p>
-              <p className="font-semibold">{phoneNumber}</p>
+              <p className="font-semibold text-black">{userPhone}</p>
             </div>
           </div>
 
@@ -79,7 +80,7 @@ const OrderSummaryCard = ({
             <MapPin className="w-5 h-5 text-gray-500" />
             <div>
               <p className="text-xs text-gray-500">Shipping Address</p>
-              <p className="font-semibold">{address}</p>
+              <p className="font-semibold text-black">{address}</p>
             </div>
           </div>
         </div>
@@ -88,15 +89,11 @@ const OrderSummaryCard = ({
       {/* Items List */}
       <div className="p-4 border-b">
         <h3 className="font-bold mb-3 text-gray-700">Order Items</h3>
-        {items.map((item, index) => (
+        {total_cart.map((item, index) => (
           <div key={index} className="flex justify-between mb-2 last:mb-0">
             <div>
-              <p className="font-semibold">{item.name}</p>
-              <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
+              <p className="font-semibold text-black">{item.name}</p>
             </div>
-            <p className="font-semibold">
-              ${(item.quantity * item.price).toFixed(2)}
-            </p>
           </div>
         ))}
       </div>
@@ -105,11 +102,9 @@ const OrderSummaryCard = ({
       <div className="p-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <CreditCard className="w-5 h-5 text-gray-500" />
-          <p className="font-semibold">Total Amount</p>
+          <p className="font-semibold  text-black">Total Amount</p>
         </div>
-        <p className="text-xl font-bold text-green-600">
-          ${totalAmount.toFixed(2)}
-        </p>
+        <p className="text-xl font-bold text-green-600">${totalPrice}</p>
       </div>
     </div>
   );
