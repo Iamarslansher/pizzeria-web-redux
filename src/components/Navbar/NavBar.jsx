@@ -52,8 +52,6 @@ const Navbar = () => {
       yourOrder = total_orders.find((order) =>
         order.orderNumber.toString().includes(searchValue)
       );
-      console.log(yourOrder, "NAV");
-      // return;
       if (yourOrder) {
         dispatch(userSearchOrder(yourOrder));
       }

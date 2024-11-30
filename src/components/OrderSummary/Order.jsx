@@ -9,16 +9,8 @@ import {
 } from "lucide-react";
 
 const OrderSummaryCard = (props) => {
-  const {
-    address,
-    orderNumber,
-    orderStatus,
-    totalPrice,
-    userName,
-    userPhone,
-    total_cart,
-  } = props.order;
-  console.log(props, "Prps");
+  const { address, orderStatus, totalPrice, userName, userPhone, total_cart } =
+    props.order;
 
   // Status color mapping
   const getStatusColor = (status) => {

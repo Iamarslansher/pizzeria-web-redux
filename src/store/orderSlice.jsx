@@ -23,7 +23,6 @@ const addToOrderSlice = createSlice({
       const orderIndex = state.orders.findIndex(
         (order) => order.orderNumber === orderId
       );
-      console.log(orderIndex);
       if (orderIndex !== -1) {
         state.orders[orderIndex].orderStatus = newStatus;
       }

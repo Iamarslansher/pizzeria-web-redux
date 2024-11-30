@@ -7,8 +7,16 @@ import OrderSummaryCard from "../OrderSummary/Order";
 const Dashboard = () => {
   const userSearchItem = useSelector((state) => state.pizaSearchReducer.pizas);
   let searchedPizaIs = userSearchItem[userSearchItem.length - 1];
+
   const searchItem = useSelector((state) => state.orderSlice.userOrder);
-  let searchOrder = searchItem[searchItem.length - 1];
+  console.log(searchItem, "searchItem");
+  let searchOrder = [];
+  if (searchItem.length) {
+    searchOrder = searchItem[searchItem.length - 1];
+    console.log(searchOrder, "searchOrder");
+  }
+  console.log(searchOrder, "searchOrder");
+
   return (
     <div className="bg-gray-900 text-white py-12">
       <div className="container min-h-screen mx-auto px-4">
