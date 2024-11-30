@@ -14,6 +14,8 @@ const Dashboard = () => {
       <div className="container min-h-screen mx-auto px-4">
         <h1 className="text-4xl font-bold mb-8">Pizza Gallery</h1>
         {searchItem.length > 0 && <OrderSummaryCard order={searchOrder} />}
+        <br />
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {searchedPizaIs.length === 0
             ? PIZZAS.map((pizza, index) => (
