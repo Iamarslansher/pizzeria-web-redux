@@ -11,6 +11,7 @@ import {
 const OrderSummaryCard = (props) => {
   const { address, orderStatus, totalPrice, userName, userPhone, total_cart } =
     props.order;
+  console.log(props, "Prps");
 
   // Status color mapping
   const getStatusColor = (status) => {

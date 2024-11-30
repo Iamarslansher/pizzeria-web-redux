@@ -6,15 +6,13 @@ import OrderSummaryCard from "../OrderSummary/Order";
 
 const Dashboard = () => {
   const userSearchItem = useSelector((state) => state.pizaSearchReducer.pizas);
-  let searchedPizaIs = userSearchItem[userSearchItem.length - 1];
+  let searchedPizaIs =
+    userSearchItem.length > 0 ? userSearchItem[userSearchItem.length - 1] : [];
 
   const searchItem = useSelector((state) => state.orderSlice.userOrder);
   console.log(searchItem, "searchItem");
-  let searchOrder = [];
-  if (searchItem.length) {
-    searchOrder = searchItem[searchItem.length - 1];
-    console.log(searchOrder, "searchOrder");
-  }
+  let searchOrder =
+    searchItem.length > 0 ? searchItem[searchItem.length - 1] : [];
   console.log(searchOrder, "searchOrder");
 
   return (

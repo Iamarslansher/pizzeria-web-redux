@@ -44,12 +44,10 @@ const Navbar = () => {
   const handleSearchOrder = (e) => {
     const searchValue = e.target.value;
     setSearchOrder(searchValue);
-    let yourOrder = [];
     if (!searchValue) {
       dispatch(clearOrder());
-    }
-    if (searchValue && Array.isArray(total_orders)) {
-      yourOrder = total_orders.find((order) =>
+    } else if (Array.isArray(total_orders)) {
+      const yourOrder = total_orders.find((order) =>
         order.orderNumber.toString().includes(searchValue)
       );
       if (yourOrder) {
